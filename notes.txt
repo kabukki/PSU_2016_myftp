@@ -1,0 +1,29 @@
+https://tools.ietf.org/html/rfc959
+https://www.ietf.org/rfc/rfc959.txt
+PAGE 35 -> reply code
+
+http://www.slacksite.com/other/ftp.html
+https://cr.yp.to/ftp/syst.html
+https://cr.yp.to/ftp/cwd.html
+Resume du workflow:
+http://www.networkautomation.com/urc/knowledgebase/common-ftp-socket-errors/02899795-9874-19FA-89D9FA88304286FA/
+
+Liste des commandes organisees: page 50.
+
+Internal error: 426
+----------
+Listen sur toutes les interfaces disponibles: ANY
+Une fois client connecte, on peut recuperer l'adresse du socket auquel il est connecte
+avec getsockname(client_sock, ....).
+
+Reponses multi-lignes: extrait page 36:
+"Thus the format for multi-line replies is that the first line
+ will begin with the exact required reply code, followed
+ immediately by a Hyphen, "-" (also known as Minus), followed by
+ text.  The last line will begin with the same code, followed
+ immediately by Space <SP>, optionally some text, and the Telnet
+ end-of-line code."
+
+----------------
+KNOWN BUGS:
+- ABOR: conflit entre ABOR et RETR/STOR : 2 messages contradictoires seront envoyes (200+426)
